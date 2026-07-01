@@ -1,63 +1,23 @@
-# Deploying Pet Crew's legal docs (GitHub Pages)
-
-The app links to a hosted **Terms of Service** and **Privacy Policy**. The source
-markdown lives in this repo at `legal/terms-of-service.md` and
-`legal/privacy-policy.md`; this doc explains how to publish them and where the app
-expects them to live.
-
-## Target URLs (what the app links to)
-
-The app (`lib/config.ts` → `LEGAL_URLS`) points at:
-
-- Terms:   `https://unpaidmajdoor.github.io/petcrew-legal/terms`
-- Privacy: `https://unpaidmajdoor.github.io/petcrew-legal/privacy`
-
-If you deploy to different URLs, update `LEGAL_URLS` in `lib/config.ts` to match.
-
-## Setup — dedicated `petcrew-legal` GitHub Pages repo
-
-1. Create a new public repo named **`petcrew-legal`** under the `unpaidmajdoor`
-   account.
-2. Copy `legal/terms-of-service.md` and `legal/privacy-policy.md` into it. Convert
-   each to HTML (any markdown-to-HTML tool works), or keep the markdown and let a
-   GitHub Pages theme render it.
-3. Add an `index.html` at the repo root that links to both pages (sample below).
-4. To get the clean `/terms` and `/privacy` paths, create either:
-   - `terms.html` and `privacy.html` at the repo root, **or**
-   - folders `terms/index.html` and `privacy/index.html`.
-5. Enable **Settings → Pages → Deploy from branch → `main` / root**.
-6. Push. The pages go live at `https://unpaidmajdoor.github.io/petcrew-legal/terms`
-   and `.../privacy` within a minute or two.
-
-## Sample `index.html`
-
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pet Crew — Legal</title>
-  </head>
-  <body style="font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px;">
-    <h1>Pet Crew — Legal</h1>
-    <p>Pet Crew is operated by Sanket Maharana, based in Bengaluru, India.</p>
-    <ul>
-      <li><a href="./terms">Terms of Service</a></li>
-      <li><a href="./privacy">Privacy Policy</a></li>
-    </ul>
-    <p>Contact: maharana.mds92@gmail.com</p>
-  </body>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pet Crew — Legal</title>
+  <style>
+    body { font-family: -apple-system, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 20px; }
+    h1 { color: #2C3E50; }
+    ul { line-height: 2; }
+    a { color: #0EA5A4; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h1>Pet Crew — Legal</h1>
+  <p>Pet Crew is operated by Sanket Maharana, based in Bengaluru, India.</p>
+  <ul>
+    <li><a href="terms">Terms of Service</a></li>
+    <li><a href="privacy">Privacy Policy</a></li>
+  </ul>
+  <p>Contact: maharana.mds92@gmail.com</p>
+</body>
 </html>
-```
-
-Convert each markdown file to HTML and save as `terms/index.html` and
-`privacy/index.html` (or `terms.html` / `privacy.html`).
-
-## Play Console prep
-
-- The Google Play Console listing **requires a Privacy Policy URL**.
-- Use: `https://unpaidmajdoor.github.io/petcrew-legal/privacy`
-- Enter it under **App content → Privacy Policy** in the Play Console.
-- Keep the URL live and current — Google re-checks it, and a dead link can block or
-  remove the listing.
